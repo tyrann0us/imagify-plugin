@@ -1,6 +1,7 @@
 <?php
 
 use Imagify\User\User;
+use Imagify\Dependencies\WPMedia\PluginFamily\Model\PluginFamily;
 
 defined( 'ABSPATH' ) || die( 'Cheatin’ uh?' );
 
@@ -214,7 +215,14 @@ class Imagify_Views {
 	 * @since 1.7
 	 */
 	public function display_settings_page() {
-		$this->print_template( 'page-settings' );
+		$plugin_family = new PluginFamily();
+		$plugins_array = $plugin_family->get_filtered_plugins( 'imagify/imagify' );
+
+		$data = [
+			'plugin_family' => $plugins_array['uncategorized'],
+		];
+
+		$this->print_template( 'page-settings', $data );
 	}
 
 	/**
