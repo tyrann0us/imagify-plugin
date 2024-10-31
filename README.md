@@ -155,6 +155,13 @@ When the plugin is disabled, your existing images remain optimized. Backups of t
 Please report security bugs found in the site-reviews plugin's source code through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/imagify). The Patchstack team will assist you with verification, CVE assignment and take care of notifying the developers of this plugin.
 
 ## Changelog
+### 2.2.3
+- Enhancement: Cache the calls to the license API to avoid sending unnecessary requests
+- 3rd-party compatibility: Update priority on `template_redirect` to improve compatibility with WP Rocket’s LazyLoad
+- Bugfix: Fix `Uncaught TypeError: strpos() expects parameter 1 to be string` fatal error
+- Enhancement: UI improvements
+- Enhancement: Improve the code architecture
+
 ### 2.2.2
 - Enhancement: Allow to choose which Next-Gen images should be generated in UI
 - Enhancement: Guard against image size that’s not a string
