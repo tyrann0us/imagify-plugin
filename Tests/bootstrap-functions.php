@@ -44,6 +44,5 @@ function init_constants( $test_suite_folder ) {
 
 	if ( 'Unit' === $test_suite_folder && ! defined( 'ABSPATH' ) ) {
 		define( 'ABSPATH', IMAGIFY_PLUGIN_ROOT );
-		define( 'MINUTE_IN_SECONDS', 60 );
 	}
 }
