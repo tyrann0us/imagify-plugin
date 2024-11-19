@@ -635,18 +635,23 @@ class Imagify_Views {
 	}
 
 	/**
+	 * Check if menu is present
+	 *
+	 * @return bool
+	 */
+	private function admin_menu_is_present(): bool {
+		global $wp_admin_bar;
+
+		$imagify_menu_id = 'imagify';
+
+		return $wp_admin_bar && $wp_admin_bar->get_node( $imagify_menu_id );
+	}
+
+	/**
 	 * Print the payment modal.
 	 */
 	public function print_modal_payment() {
-		$screen              = get_current_screen();
-		$imagify_admin_pages = [
-			'media_page_imagify-bulk-optimization',
-			'settings_page_imagify',
-			'media_page_imagify-files',
-			'nextgen-gallery_page_imagify-ngg-bulk-optimization',
-		];
-
-		if ( in_array( $screen->id, $imagify_admin_pages, true ) ) {
+		if ( is_admin_bar_showing() && $this->admin_menu_is_present() ) {
 			$this->print_template(
 				'modal-payment',
 				[
