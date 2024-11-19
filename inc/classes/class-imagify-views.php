@@ -638,12 +638,22 @@ class Imagify_Views {
 	 * Print the payment modal.
 	 */
 	public function print_modal_payment() {
-		$this->print_template(
-			'modal-payment',
-			[
-				'attachments_number' => $this->get_attachments_number_modal(),
-			]
-		);
+		$screen              = get_current_screen();
+		$imagify_admin_pages = [
+			'media_page_imagify-bulk-optimization',
+			'settings_page_imagify',
+			'media_page_imagify-files',
+			'nextgen-gallery_page_imagify-ngg-bulk-optimization',
+		];
+
+		if ( in_array( $screen->id, $imagify_admin_pages, true ) ) {
+			$this->print_template(
+				'modal-payment',
+				[
+					'attachments_number' => $this->get_attachments_number_modal(),
+				]
+			);
+		}
 	}
 
 	/**
