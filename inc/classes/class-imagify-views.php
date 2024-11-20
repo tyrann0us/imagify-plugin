@@ -664,12 +664,12 @@ class Imagify_Views {
 	/**
 	 * Print the payment modal.
 	 *
-	 * @param bool $print
+	 * @param bool $print Boolean to determine if the modal payment should be printed or not.
 	 *
 	 * @return void
 	 */
 	public function print_modal_payment( $print ) {
-		if ( $print ) {
+		if ( is_admin_bar_showing() && $this->admin_menu_is_present() && $print ) {
 			$this->print_template(
 				'modal-payment',
 				[
